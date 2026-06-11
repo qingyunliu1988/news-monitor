@@ -33,12 +33,62 @@ body{font-family:'Inter',sans-serif;background:#080812;color:rgba(255,255,255,0.
 .stat.breaking .stat-num{color:#ef4444;}
 .stat.sources .stat-num{color:#7c3aed;}
 .notif-bar{margin:0 24px 12px;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.25);border-radius:10px;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:0.88rem;}
-.notif-bar button{padding:5px 12px;background:linear-gradient(135deg,#7c3aed,#4f46e5);border:none;border-radius:6px;color:#fff;font-size:0.82rem;cursor:pointer;font-family:inherit;white-space:nowrap;}
+.notif-bar button{padding:5px 12px;background:linear-gradient(135deg,#7c3aed,#4f46e5);border:none;border-radius:6px;color:#fff;font-size:0.82rem;cursor:pointer;font-family:inherit;}
+
+/* TOP 10 SECTION */
+.top10-section{margin:0 24px 20px;}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.section-title{font-size:1.1rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px;}
+.section-title span{background:linear-gradient(135deg,#7c3aed,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.section-sub{font-size:0.78rem;color:rgba(255,255,255,0.3);}
+.top10-list{display:flex;flex-direction:column;gap:6px;}
+.top10-item{
+  display:flex;align-items:flex-start;gap:14px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:12px;padding:12px 16px;
+  cursor:pointer;transition:all 0.2s;
+  text-decoration:none;color:inherit;
+  animation:fadeIn 0.3s ease;
+}
+.top10-item:hover{background:rgba(255,255,255,0.06);border-color:rgba(124,58,237,0.3);transform:translateX(4px);}
+.top10-item.is-breaking{border-color:rgba(239,68,68,0.4);background:rgba(239,68,68,0.05);}
+.top10-rank{
+  font-size:1.1rem;font-weight:800;
+  min-width:28px;text-align:center;
+  color:rgba(255,255,255,0.15);
+  flex-shrink:0;padding-top:1px;
+}
+.top10-rank.rank-1{color:#fbbf24;text-shadow:0 0 10px rgba(251,191,36,0.5);}
+.top10-rank.rank-2{color:#94a3b8;}
+.top10-rank.rank-3{color:#cd7f32;}
+.top10-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;}
+.top10-title{font-size:0.95rem;font-weight:500;line-height:1.4;color:rgba(255,255,255,0.88);}
+.top10-item.is-breaking .top10-title{color:#fff;font-weight:600;}
+.top10-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.top10-source{display:flex;align-items:center;gap:5px;}
+.top10-dot{width:7px;height:7px;border-radius:50%;}
+.top10-name{font-size:0.75rem;color:rgba(255,255,255,0.35);font-weight:500;}
+.top10-time{font-size:0.75rem;color:rgba(255,255,255,0.25);}
+.top10-time.new{color:#34d399;}
+.top10-tags{display:flex;gap:4px;}
+.tag{font-size:0.68rem;padding:1px 6px;border-radius:4px;font-weight:500;}
+.tag-breaking{background:rgba(239,68,68,0.2);color:#f87171;}
+.tag-politics{background:rgba(59,130,246,0.2);color:#93c5fd;}
+.tag-economy{background:rgba(251,191,36,0.2);color:#fbbf24;}
+.tag-tech{background:rgba(139,92,246,0.2);color:#c4b5fd;}
+.tag-conflict{background:rgba(249,115,22,0.2);color:#fb923c;}
+.tag-disaster{background:rgba(20,184,166,0.2);color:#2dd4bf;}
+.top10-arrow{color:rgba(255,255,255,0.15);font-size:0.85rem;flex-shrink:0;padding-top:2px;}
+
+/* divider */
+.divider{margin:0 24px 20px;border:none;border-top:1px solid rgba(255,255,255,0.06);}
+
 .filters{padding:0 24px 16px;display:flex;gap:8px;flex-wrap:wrap;}
 .filter-btn{padding:7px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:20px;color:rgba(255,255,255,0.45);font-size:0.85rem;cursor:pointer;transition:all 0.2s;font-family:inherit;display:flex;align-items:center;gap:6px;}
 .filter-btn:hover{color:#fff;border-color:rgba(124,58,237,0.4);}
 .filter-btn.active{background:rgba(124,58,237,0.2);border-color:rgba(124,58,237,0.6);color:#c4b5fd;}
-.filter-count{background:rgba(255,255,255,0.1);border-radius:10px;padding:0px 6px;font-size:0.72rem;}
+.filter-count{background:rgba(255,255,255,0.1);border-radius:10px;padding:0 6px;font-size:0.72rem;}
 .news-grid{padding:0 24px 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;}
 .news-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;cursor:pointer;transition:all 0.2s;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;animation:fadeIn 0.3s ease;text-decoration:none;color:inherit;}
 .news-card:hover{background:rgba(255,255,255,0.07);border-color:rgba(124,58,237,0.35);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3);}
@@ -49,13 +99,6 @@ body{font-family:'Inter',sans-serif;background:#080812;color:rgba(255,255,255,0.
 .source-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
 .source-name{font-size:0.75rem;font-weight:600;color:rgba(255,255,255,0.45);}
 .card-tags{display:flex;gap:5px;flex-wrap:wrap;}
-.tag{font-size:0.7rem;padding:2px 7px;border-radius:4px;font-weight:500;}
-.tag-breaking{background:rgba(239,68,68,0.2);color:#f87171;}
-.tag-politics{background:rgba(59,130,246,0.2);color:#93c5fd;}
-.tag-economy{background:rgba(251,191,36,0.2);color:#fbbf24;}
-.tag-tech{background:rgba(139,92,246,0.2);color:#c4b5fd;}
-.tag-conflict{background:rgba(249,115,22,0.2);color:#fb923c;}
-.tag-disaster{background:rgba(20,184,166,0.2);color:#2dd4bf;}
 .card-title{font-size:0.98rem;font-weight:600;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
 .news-card.is-breaking .card-title{color:#fff;}
 .card-desc{font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
@@ -67,8 +110,10 @@ body{font-family:'Inter',sans-serif;background:#080812;color:rgba(255,255,255,0.
 .loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px;gap:16px;color:rgba(255,255,255,0.25);grid-column:1/-1;}
 .spinner{width:40px;height:40px;border-radius:50%;border:3px solid rgba(124,58,237,0.2);border-top-color:#7c3aed;animation:spin 0.8s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg)}}
+.loading-top10{display:flex;align-items:center;gap:12px;padding:20px;color:rgba(255,255,255,0.25);font-size:0.9rem;}
+.spinner-sm{width:20px;height:20px;border-radius:50%;border:2px solid rgba(124,58,237,0.2);border-top-color:#7c3aed;animation:spin 0.8s linear infinite;flex-shrink:0;}
 .error-msg{grid-column:1/-1;text-align:center;padding:40px;color:rgba(255,255,255,0.25);font-size:0.95rem;}
-@media(max-width:600px){.header{padding:14px 16px 0;}.stats-bar,.filters,.news-grid{padding-left:16px;padding-right:16px;}.news-grid{grid-template-columns:1fr;}}
+@media(max-width:600px){.header{padding:14px 16px 0;}.stats-bar,.filters,.news-grid,.top10-section{padding-left:16px;padding-right:16px;}.news-grid{grid-template-columns:1fr;}.divider{margin-left:16px;margin-right:16px;}}
 </style>
 </head>
 <body>
@@ -98,6 +143,20 @@ body{font-family:'Inter',sans-serif;background:#080812;color:rgba(255,255,255,0.
   <span>🔔 开启浏览器通知，突发新闻第一时间提醒</span>
   <button onclick="requestNotif()">开启通知</button>
 </div>
+
+<!-- TOP 10 -->
+<div class="top10-section">
+  <div class="section-header">
+    <div class="section-title">🔥 <span>Top 10</span> Global Headlines</div>
+    <div class="section-sub" id="top10Updated">实时更新</div>
+  </div>
+  <div class="top10-list" id="top10List">
+    <div class="loading-top10"><div class="spinner-sm"></div>加载头条新闻中...</div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
 <div class="filters">
   <button class="filter-btn active" onclick="setFilter('all',this)">全部 <span class="filter-count" id="count-all">0</span></button>
   <button class="filter-btn" onclick="setFilter('breaking',this)">⚡ 突发 <span class="filter-count" id="count-breaking">0</span></button>
@@ -121,10 +180,10 @@ const SOURCES=[
   {name:'AP',color:'#cc0000',url:'https://rsshub.app/apnews/topics/ap-top-news'},
   {name:'Bloomberg',color:'#6366f1',url:'https://feeds.bloomberg.com/markets/news.rss'},
   {name:'Guardian',color:'#05a4e0',url:'https://www.theguardian.com/world/rss'},
-  {name:'AlJazeera',color:'#ffffff',url:'https://www.aljazeera.com/xml/rss/all.xml'},
+  {name:'AlJazeera',color:'#d4a017',url:'https://www.aljazeera.com/xml/rss/all.xml'},
   {name:'BBC中文',color:'#f87171',url:'https://feeds.bbci.co.uk/zhongwen/simp/world/rss.xml'},
 ];
-const BREAKING_KEYWORDS=['breaking','urgent','alert','emergency','war','attack','earthquake','tsunami','explosion','crash','killed','dead','ceasefire','invasion','missile','nuclear','terror','shoot','fire','flood','volcano','突发','紧急','警报','战争','袭击','地震','海啸','爆炸','死亡','核'];
+const BREAKING_KEYWORDS=['breaking','urgent','alert','emergency','war','attack','earthquake','tsunami','explosion','crash','killed','dead','ceasefire','invasion','missile','nuclear','terror','shoot','flood','volcano','突发','紧急','警报','战争','袭击','地震','海啸','爆炸','死亡','核'];
 const TAG_RULES=[
   {tag:'breaking',label:'⚡ 突发',words:['breaking','urgent','alert','突发','紧急']},
   {tag:'conflict',label:'⚔️ 冲突',words:['war','attack','missile','military','killed','战争','袭击']},
@@ -143,9 +202,58 @@ async function fetchSource(s){try{const r=await fetch(PROXY+encodeURIComponent(s
 function playAlert(){try{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();[0,200,400].forEach(delay=>{setTimeout(()=>{const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.connect(g);g.connect(audioCtx.destination);o.frequency.value=880;g.gain.setValueAtTime(0.3,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+0.3);o.start();o.stop(audioCtx.currentTime+0.3);},delay);});}catch{}}
 function showBreakingBanner(item){const b=document.getElementById('breakingBanner');document.getElementById('breakingText').textContent='['+item.source+'] '+item.title;b.style.display='flex';document.getElementById('bannerSpacer').style.height='48px';playAlert();if(Notification.permission==='granted')new Notification('⚡ 突发新闻',{body:item.title,icon:'🌐'});}
 function closeBanner(){document.getElementById('breakingBanner').style.display='none';document.getElementById('bannerSpacer').style.height='0';}
-function renderNews(){const grid=document.getElementById('newsGrid');let filtered=allNews;if(currentFilter==='breaking')filtered=allNews.filter(n=>n.breaking);else if(currentFilter!=='all')filtered=allNews.filter(n=>n.source===currentFilter);if(filtered.length===0){grid.innerHTML='<div class="error-msg">暂无相关新闻，请稍后刷新</div>';return;}grid.innerHTML=filtered.map(n=>`<a class="news-card ${n.breaking?'is-breaking':''}" href="${n.link}" target="_blank" rel="noopener"><div class="card-top"><div class="source-badge"><div class="source-dot" style="background:${n.color}"></div><div class="source-name">${n.source}</div></div><div class="card-tags">${n.tags.slice(0,2).map(t=>`<div class="tag tag-${t.tag}">${t.label}</div>`).join('')}</div></div><div class="card-title">${n.title}</div>${n.desc?`<div class="card-desc">${n.desc}</div>`:''}<div class="card-bottom"><div class="card-time ${isNew(n.pubDate)?'new':''}">${isNew(n.pubDate)?'🟢 ':''}${timeAgo(n.pubDate)}</div><div class="read-more">阅读全文 →</div></div></a>`).join('');}
+
+function renderTop10(){
+  const list=document.getElementById('top10List');
+  // score: breaking=+5, isNew=+3, else by recency
+  const scored=allNews.map(n=>({...n,score:(n.breaking?5:0)+(isNew(n.pubDate)?3:0)}));
+  const top10=scored.sort((a,b)=>b.score-a.score||new Date(b.pubDate)-new Date(a.pubDate)).slice(0,10);
+  if(top10.length===0){list.innerHTML='<div style="padding:20px;color:rgba(255,255,255,0.25);font-size:0.9rem;">暂无数据</div>';return;}
+  list.innerHTML=top10.map((n,i)=>`
+    <a class="top10-item ${n.breaking?'is-breaking':''}" href="${n.link}" target="_blank" rel="noopener">
+      <div class="top10-rank ${i===0?'rank-1':i===1?'rank-2':i===2?'rank-3':''}">${i+1}</div>
+      <div class="top10-body">
+        <div class="top10-title">${n.title}</div>
+        <div class="top10-meta">
+          <div class="top10-source">
+            <div class="top10-dot" style="background:${n.color}"></div>
+            <div class="top10-name">${n.source}</div>
+          </div>
+          <div class="top10-time ${isNew(n.pubDate)?'new':''}">${isNew(n.pubDate)?'🟢 ':''}${timeAgo(n.pubDate)}</div>
+          <div class="top10-tags">${n.tags.slice(0,2).map(t=>`<div class="tag tag-${t.tag}">${t.label}</div>`).join('')}</div>
+        </div>
+      </div>
+      <div class="top10-arrow">→</div>
+    </a>
+  `).join('');
+  const now=new Date();
+  document.getElementById('top10Updated').textContent='更新于 '+now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');
+}
+
+function renderNews(){
+  const grid=document.getElementById('newsGrid');
+  let filtered=allNews;
+  if(currentFilter==='breaking')filtered=allNews.filter(n=>n.breaking);
+  else if(currentFilter!=='all')filtered=allNews.filter(n=>n.source===currentFilter);
+  if(filtered.length===0){grid.innerHTML='<div class="error-msg">暂无相关新闻，请稍后刷新</div>';return;}
+  grid.innerHTML=filtered.map(n=>`<a class="news-card ${n.breaking?'is-breaking':''}" href="${n.link}" target="_blank" rel="noopener"><div class="card-top"><div class="source-badge"><div class="source-dot" style="background:${n.color}"></div><div class="source-name">${n.source}</div></div><div class="card-tags">${n.tags.slice(0,2).map(t=>`<div class="tag tag-${t.tag}">${t.label}</div>`).join('')}</div></div><div class="card-title">${n.title}</div>${n.desc?`<div class="card-desc">${n.desc}</div>`:''}<div class="card-bottom"><div class="card-time ${isNew(n.pubDate)?'new':''}">${isNew(n.pubDate)?'🟢 ':''}${timeAgo(n.pubDate)}</div><div class="read-more">阅读全文 →</div></div></a>`).join('');}
+
 function updateStats(){const b=allNews.filter(n=>n.breaking).length,nw=allNews.filter(n=>isNew(n.pubDate)).length,src=new Set(allNews.map(n=>n.source)).size;document.getElementById('statBreaking').textContent=b;document.getElementById('statTotal').textContent=allNews.length;document.getElementById('statSources').textContent=src;document.getElementById('statNew').textContent=nw;document.getElementById('count-all').textContent=allNews.length;document.getElementById('count-breaking').textContent=b;}
-async function fetchAll(){document.getElementById('newsGrid').innerHTML='<div class="loading"><div class="spinner"></div><div>正在加载...</div></div>';const results=await Promise.all(SOURCES.map(s=>fetchSource(s)));const fresh=results.flat().filter(n=>n.title);const newBreaking=fresh.filter(n=>n.breaking&&!seenIds.has(n.id));if(newBreaking.length>0&&seenIds.size>0)showBreakingBanner(newBreaking[0]);fresh.forEach(n=>seenIds.add(n.id));allNews=fresh.sort((a,b)=>new Date(b.pubDate)-new Date(a.pubDate));const now=new Date();document.getElementById('lastUpdate').textContent=now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0')+':'+now.getSeconds().toString().padStart(2,'0');updateStats();renderNews();}
+
+async function fetchAll(){
+  document.getElementById('newsGrid').innerHTML='<div class="loading"><div class="spinner"></div><div>正在加载...</div></div>';
+  document.getElementById('top10List').innerHTML='<div class="loading-top10"><div class="spinner-sm"></div>加载头条中...</div>';
+  const results=await Promise.all(SOURCES.map(s=>fetchSource(s)));
+  const fresh=results.flat().filter(n=>n.title);
+  const newBreaking=fresh.filter(n=>n.breaking&&!seenIds.has(n.id));
+  if(newBreaking.length>0&&seenIds.size>0)showBreakingBanner(newBreaking[0]);
+  fresh.forEach(n=>seenIds.add(n.id));
+  allNews=fresh.sort((a,b)=>new Date(b.pubDate)-new Date(a.pubDate));
+  const now=new Date();
+  document.getElementById('lastUpdate').textContent=now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0')+':'+now.getSeconds().toString().padStart(2,'0');
+  updateStats();renderTop10();renderNews();
+}
+
 function setFilter(f,btn){currentFilter=f;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderNews();}
 async function requestNotif(){const p=await Notification.requestPermission();if(p==='granted')document.getElementById('notifBar').style.display='none';}
 window.addEventListener('load',()=>{if(Notification.permission==='default')document.getElementById('notifBar').style.display='flex';fetchAll();setInterval(fetchAll,5*60*1000);});
